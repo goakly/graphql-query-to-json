@@ -18,3 +18,4 @@ release.sh
 .npm/
 .npmrc
 .npmignore
+bun.lockb

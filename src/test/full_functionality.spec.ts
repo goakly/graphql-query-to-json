@@ -8,6 +8,32 @@ import {
 import {EnumType} from "json-to-graphql-query"
 
 describe("Queries", () => {
+
+    it("Test", () => {
+        const query = `
+        query {
+            feedback {
+              nodes {
+                id
+                timezone
+                weee:fieldValue(fieldId: "test")
+              }
+            }
+          }
+        `
+        expect(graphQlQueryToJson(query)).toEqual({
+            query: {
+                feedback:{
+                    nodes:{
+                        id: true,
+                        timezone:true,
+                        weee:true
+                    }
+                }
+            },
+        })
+    })
+
     it("Single property", () => {
         const query = `
             query {
@@ -30,6 +56,8 @@ describe("Queries", () => {
             },
         })
     })
+
+
 
     it("Two properties", () => {
         const query = `
